@@ -1,5 +1,0 @@
-commit 8b3d91e5401ffbf3683efdf9e746aa63b4cc616a
-Author: gianni-jin <giannijin123@gmail.com>
-Date:   Wed Feb 28 17:39:50 2024 +0100
-
-    Initial commit. As for now, most features planned for now have been added
