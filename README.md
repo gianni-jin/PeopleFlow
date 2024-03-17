@@ -1,4 +1,4 @@
-# Project Overview
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/5cecd24d-5892-42e4-8ffc-53b0aea98415)![image](https://github.com/gianni-jin/TalentForce/assets/129873947/2a7ce8ef-4eae-429a-a419-8caa9fcd0a44)# Project Overview
 
 ## Introduction
 TalentForce is a straightforward employee management application. The application allows users to effortlessly add new employees to the database, modify existing employee details, delete employees, and assign them to specific departments. Additionally, users can perform search operations using certain parameters to sift through the employee database.
@@ -28,6 +28,124 @@ Upon launching the program, we can go to http://localhost:8080/swagger-ui/index.
 
 ## Database Schema
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/d1ef74f1-04c2-441d-9372-b347348ba0a4)
+
+# Demo
+
+
+Upon opening localhost:8080, we see the index.html page, and it has two options.
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/9572d701-e93d-4183-9099-b6f89a6f9922)
+
+Let's start with "Manage Employees"
+
+
+## Adding an Employee without Having an Instance of Department
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/8e3dce4f-3a76-405e-b4cf-e13cc133908a)
+Currently, there's no employee. 
+
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/a73182ea-2d2a-4b97-ae62-509ada0772a2)
+We can add a new employee by inserting values into this form. Note that because I had used validation annotations with the fieds of the employee entity, the input must satisfy some requirements. For example, for "Email" field, there has to be "@".
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/494697a0-9156-40fb-b9c8-80381101caca)
+Some other fields cannot be left blank, such as "Last Name"
+
+
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/224ee5ec-357c-42ad-86d1-0524dbda3ddc)
+Ops! Actually returned an error! Why? Because naturally, an employee shouldn't be added into the database without a department being created first!
+
+
+## Adding Departments
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/dc887fc3-8810-4d9f-9092-a2431f6c1960)
+
+Let's therefore go back to create some instances of department first
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/ca0162c6-d080-4fe4-a9a0-dcf4cadfbb7d)
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/d962b5e1-8b5b-4e89-8586-5d0d4ef2a545)
+
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/c1e76f1b-2ea6-4d17-b0b9-582ccbbd5017)
+
+## Adding Employees
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/3fc01cfb-2d90-4c18-be7a-3fbfbf85c092)
+Great! Now we can see from the drop down list that we've a set of departents to choose from!
+
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/3975767c-b513-440d-b25a-c50c873dd34b)
+Our first instance of employee is added to the database!
+
+
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/05a86271-98fc-4586-8141-c72906e388ed)
+
+## Filter Employee Records
+
+As our database about employees grows over time, we need to use search functions to better find out the records of employees that we need to manage.
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/bfbcfc5a-56d5-4a8c-ac18-199bfb0832e6)
+
+
+We can use different ways to achieve this. For instance, by using the location:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/0cc2f5bd-cee8-4de4-8c32-2507299f3c5a)
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/00c5167f-1fa4-4f5f-8322-ab6fc068d92f)
+
+Or by using the id:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/0815623f-3671-4a7b-a90e-a58731e4aee9)
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/1546bbb0-7b65-494c-817e-76003378ef2d)
+
+Or by using the last name:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/bd66800c-dc81-418a-aad8-af53ec250b2d)
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/632e0ade-895e-47b6-91e5-7795e8e5fbad)
+
+
+## Update Employee
+
+We can also update the fields of an employee.
+
+Before: 
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/31ad5c62-7257-41be-8c5d-35fb8c701c61)
+
+After: 
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/bfa0054a-a9ea-4f41-b2d1-0aa56166a24b)
+
+
+## Delete Employee
+We can also delete employees from our database:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/405d0c48-4230-478a-a1eb-78b915b1545d)
+
+
+## Change Employee's Department
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/b71a2c5e-5993-4f9d-b3a6-fd4c0ae30096)
+We can also change the employee's department directly in the department management section, by clicking on the update and then removing the current employees from a certain department:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/4c9c546d-f982-49f6-9abc-6bee8b2a322a)
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/5b59071d-201e-4218-ad90-4aad95176133)
+
+
+Now that two "Rossi" aren't associated with a deparment, we can update their department association:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/9a08d699-71f6-4691-a261-250a03d23c34)
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/0fded551-9500-41dd-ad17-4f80266e81b8)
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/9a350134-4b8c-4d24-a221-9d695f338e1d)
+
+## Update Department
+Of course we can update a department's name as we wish as well:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/8ab475bb-8ed1-42f4-9ef3-1072a082c037)
+
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/98f4e796-2eae-4caf-a2c7-4f0d2a8068f3)
+
+
+## Delete Departments
+And finally, we can delete departments:
+
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/b8b5547e-4a87-4977-8c25-c80a8f009617)
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/239126aa-0b85-4a4b-9e43-2b34534dc1ab)
 
 
 # Code Structure
