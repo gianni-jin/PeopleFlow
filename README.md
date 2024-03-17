@@ -155,8 +155,3 @@ The way it works is the following:
 When a ResourceNotFoundException is thrown, "handleResourceNotFoundException" creates an "ErrorObject" with the exception's message, a status code of 404 (representing a "Not Found" error), and the current timestamp. It then returns a "ResponseEntity" containing the "ErrorObject" and a HTTP status of "HttpStatus.NOT_FOUND".
 
 "handleResourceAlreadyExistsException" works very similarly to "handleResourceNotFoundException", just the code and HTTP status will be different. 
-
-=======
-# PeopleForce
-A Simple REST API Employee management application built with Spring boot and Hibernate/JPA. The database used is MySQL. Version 1.0.
->>>>>>> Stashed changes
