@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 # Project Overview
 
 ## Introduction
