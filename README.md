@@ -17,7 +17,7 @@ The back-end is built with Spring Boot and Hibernate/JPA, while the front-end ut
 The project is currently in its initial stages. I plan to incorporate additional functionalities such as authentication and authorization, logging, among others. I also intend to add more related entities to increase the complexity of the program. Furthermore, I am considering rebuilding the front-end with a more widely used framework or technology, such as Angular or React.
 
 
-## API Documentation: 
+## API Documentation
 
 Upon launching the program, we can go to http://localhost:8080/swagger-ui/index.html#/ to access to the list of rest endpoints of the program:
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/26c3d41d-a918-4a7f-85a4-dc1c2820e533)
