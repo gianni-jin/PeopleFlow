@@ -136,7 +136,7 @@ In other words, Controller layer would call these Service layer methods to handl
  This package contains the Data Transfer Object (DTO) classes which are used to transfer data between the client and the server. In other words, DTOs are  used to transfer data about a department between different parts of the application or over the network.
 
 
-Here, EmployeeDTO is used to transfer data about an employee between different parts of the application, and so is . This could be from your database to your controller, or from your controller to your view. 
+For example, EmployeeDTO is used to transfer data about an employee between different parts of the application, and so is . 
 
 
 In both classes, I've used Lombok annotations such as "@Getter", "@Setter", "@ToString", "@NoArgsConstructor", "@AllArgsConstructor" to automatically generate getter, setter, toString, and constructor methods. This helps to reduce boilerplate code and makes the code cleaner and easier to read.
