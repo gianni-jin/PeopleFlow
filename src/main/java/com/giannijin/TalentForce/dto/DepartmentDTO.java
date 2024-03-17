@@ -1,9 +1,8 @@
-package com.giannijin.PeopleFlow.dto;
+package com.giannijin.TalentForce.dto;
 
 import lombok.*;
 
 import java.util.List;
-
 
 @Getter
 @Setter

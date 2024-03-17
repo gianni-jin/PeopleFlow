@@ -1,6 +1,6 @@
-package com.giannijin.PeopleFlow.repository;
+package com.giannijin.TalentForce.repository;
 
-import com.giannijin.PeopleFlow.model.Employee;
+import com.giannijin.TalentForce.model.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -25,4 +25,9 @@ public interface EmployeeRepository extends JpaRepository <Employee, Long> {
     // List<Employee> findByLastNameContainingAndLocationContaining (String name, String location);
 
 
+    @Query("SELECT e FROM Employee e WHERE e.department IS NULL")
+    List<Employee> findByDepartmentIsNull();
+
+    @Query("SELECT e FROM Employee e WHERE e.department.id != :id OR e.department IS NULL")
+    List<Employee> findByDepartmentIdNot(@Param("id") Long id);
 }

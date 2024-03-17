@@ -1,10 +1,10 @@
-package com.giannijin.PeopleFlow;
+package com.giannijin.TalentForce;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PeopleFlowTests {
+class PeopleForceTests {
 
 	@Test
 	void contextLoads() {

@@ -1,7 +1,9 @@
-package com.giannijin.PeopleFlow.service;
+package com.giannijin.TalentForce.service;
 
-import com.giannijin.PeopleFlow.model.Department;
-import com.giannijin.PeopleFlow.repository.DepartmentRepository;
+import com.giannijin.TalentForce.exception.ResourceAlreadyExistsException;
+import com.giannijin.TalentForce.exception.ResourceNotFoundException;
+import com.giannijin.TalentForce.model.Department;
+import com.giannijin.TalentForce.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,8 +22,9 @@ public class DepartmentServiceImp implements DepartmentService {
 
     @Override
     public Department getSingleDepartment(Long id) {
-        return departmentRepository.findById(id).orElse(null);
+        return departmentRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Department not found for this id :: " + id));
     }
+
 
     @Override
     public void deleteDepartment(Long id){
@@ -30,11 +33,20 @@ public class DepartmentServiceImp implements DepartmentService {
 
     @Override
     public Department saveDepartment(Department department){
+        if(departmentRepository.existsById(department.getId())) {
+            throw new ResourceAlreadyExistsException("Department already exists with this id :: " + department.getId());
+        }
         return departmentRepository.save(department);
     }
+
 
     @Override
     public Department updateDepartment(Department department){
         return departmentRepository.save(department);
+    }
+
+    @Override
+    public List<Department> findByNameIgnoreCase(String name) {
+        return departmentRepository.findByNameContainingIgnoreCase(name);
     }
 }

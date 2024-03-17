@@ -1,4 +1,4 @@
-package com.giannijin.PeopleFlow.model;
+package com.giannijin.TalentForce.model;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -37,9 +37,9 @@ public class Employee {
     @Column (name = "age")
     private Long age = 0L;
 
-    @Column (name = "sex")
-    @Pattern(regexp="^(M|F)$",message="invalid sex, insert 'M' for male, and 'F' for female")
-    private String sex;
+    @Column (name = "gender")
+    @Pattern(regexp="^(M|F)$",message="invalid gender, insert 'M' for male, and 'F' for female")
+    private String gender;
 
     @Column (name = "location")
     private String location;
@@ -49,10 +49,9 @@ public class Employee {
     private String email;
 
 
-    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH})
     @JoinColumn(name = "department_id")
     private Department department;
-
     public void setDepartment(Department department) {
         if (department == null) {
             if (this.department != null) {

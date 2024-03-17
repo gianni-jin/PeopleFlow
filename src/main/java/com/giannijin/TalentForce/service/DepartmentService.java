@@ -1,6 +1,6 @@
-package com.giannijin.PeopleFlow.service;
+package com.giannijin.TalentForce.service;
 
-import com.giannijin.PeopleFlow.model.Department;
+import com.giannijin.TalentForce.model.Department;
 import java.util.List;
 
 public interface DepartmentService {
@@ -9,4 +9,6 @@ public interface DepartmentService {
     void deleteDepartment(Long id);
     Department saveDepartment(Department department);
     Department updateDepartment(Department department);
+
+    List<Department> findByNameIgnoreCase(String name);
 }

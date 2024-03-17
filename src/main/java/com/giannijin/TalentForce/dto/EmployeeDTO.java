@@ -1,4 +1,4 @@
-package com.giannijin.PeopleFlow.dto;
+package com.giannijin.TalentForce.dto;
 
 import lombok.*;
 
@@ -12,7 +12,7 @@ public class EmployeeDTO {
     private String firstName;
     private String lastName;
     private Long age;
-    private String sex;
+    private String gender;
     private String location;
     private String email;
     private DepartmentDTO department;

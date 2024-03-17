@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Departments</title>
+    <link rel="stylesheet" th:href="@{/departments.css}" />
+</head>
+<body>
+<div th:if="${message}" th:text="${message}"></div>
+<div class="container">
+    <h1>Departments</h1>
+    <div class="add-department">
+        <a class="button" href="/departments/new">Add New Department</a>
+        <a class="button" href="/departments">Show all Departments</a>
+    </div>
+    <div class="search-section">
+        <h2>Search Departments</h2>
+        <form class="search-form" th:action="@{/departments}" method="get">
+            <input class="search-input" type="text" name="keyword" placeholder="Enter Department Name...">
+            <button class="search-button" type="submit">Search by Name</button>
+        </form>
+    </div>
+    <h2>Department List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>No. of Employees</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="department : ${departments}">
+            <td th:text="${department.id}"></td>
+            <td th:text="${department.name}"></td>
+            <td th:text="${department.employees.size()}"></td>
+            <td>
+                <a class="update-link" th:href="@{/departments/update/{id}(id=${department.id})}">Update</a>  |
+                <a class="delete-link" th:href="@{/departments/delete/{id}(id=${department.id})}">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a class="go-back-link" href="/">Go Back</a>
+<div th:replace="fragments/footer"></div>
+</body>
+</html>

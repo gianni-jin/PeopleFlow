@@ -1,7 +1,9 @@
-package com.giannijin.PeopleFlow.service;
+package com.giannijin.TalentForce.service;
 
-import com.giannijin.PeopleFlow.model.Employee;
-import com.giannijin.PeopleFlow.repository.EmployeeRepository;
+import com.giannijin.TalentForce.exception.ResourceAlreadyExistsException;
+import com.giannijin.TalentForce.exception.ResourceNotFoundException;
+import com.giannijin.TalentForce.model.Employee;
+import com.giannijin.TalentForce.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,16 +26,15 @@ public class EmployeeServiceImp implements EmployeeService{
 
     @Override
     public Employee saveEmployee(Employee employee) {
+        if(employeeRepository.existsById(employee.getId())) {
+            throw new ResourceAlreadyExistsException("Employee already exists with this id :: " + employee.getId());
+        }
         return employeeRepository.save(employee);
     }
 
     @Override
     public Employee getSingleEmployee(Long id) {
-        Optional<Employee> employee = employeeRepository.findById(id);
-        if (employee.isPresent()) {
-            return employee.get();
-        }
-        throw new RuntimeException("Employee is not found for the id "+id);
+        return employeeRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Employee not found for this id :: " + id));
     }
 
     @Override
@@ -56,5 +57,8 @@ public class EmployeeServiceImp implements EmployeeService{
         return  employeeRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
-
+    @Override
+    public List<Employee> findEmployeesNotInDepartment() {
+        return employeeRepository.findByDepartmentIsNull();
+    }
 }

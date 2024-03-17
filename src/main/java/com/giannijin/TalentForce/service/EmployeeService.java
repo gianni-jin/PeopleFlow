@@ -1,6 +1,6 @@
-package com.giannijin.PeopleFlow.service;
+package com.giannijin.TalentForce.service;
 
-import com.giannijin.PeopleFlow.model.Employee;
+import com.giannijin.TalentForce.model.Employee;
 
 import java.util.List;
 
@@ -19,5 +19,7 @@ public interface EmployeeService {
 
     List<Employee> getEmployeeByFirstNameAndLastName (String firstName, String lastName);
 
+
+    List<Employee> findEmployeesNotInDepartment();
 }
 
