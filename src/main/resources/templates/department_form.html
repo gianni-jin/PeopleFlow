@@ -38,7 +38,7 @@
                     <td th:text="${employee.email}"></td>
                     <td th:text="${employee.department != null ? employee.department.name : 'N/A'}"></td>
                     <td>
-                        <a th:href="@{'/departments/' + ${department.id} + '/addEmployee/' + ${employee.id}}">Add</a>
+                        <a th:href="@{/departments/{departmentId}/addEmployee/{employeeId}(departmentId=${department.id},employeeId=${employee.id})}">Add</a>
                     </td>
                 </tr>
                 </tbody>
