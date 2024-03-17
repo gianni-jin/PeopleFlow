@@ -4,11 +4,12 @@ import com.giannijin.TalentForce.exception.ResourceAlreadyExistsException;
 import com.giannijin.TalentForce.exception.ResourceNotFoundException;
 import com.giannijin.TalentForce.model.Employee;
 import com.giannijin.TalentForce.repository.EmployeeRepository;
+import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional; // Add this import statement
+import java.util.Optional; 
 
 @Service
 public class EmployeeServiceImp implements EmployeeService{
@@ -26,11 +27,15 @@ public class EmployeeServiceImp implements EmployeeService{
 
     @Override
     public Employee saveEmployee(Employee employee) {
-        if(employeeRepository.existsById(employee.getId())) {
-            throw new ResourceAlreadyExistsException("Employee already exists with this id :: " + employee.getId());
+        if (employee.getId() != null) {
+            if (employeeRepository.existsById(employee.getId())) {
+                throw new EntityExistsException("Employee already exists with this id :: " + employee.getId());
+            }
         }
         return employeeRepository.save(employee);
     }
+
+
 
     @Override
     public Employee getSingleEmployee(Long id) {
@@ -44,8 +49,12 @@ public class EmployeeServiceImp implements EmployeeService{
 
     @Override
     public Employee updateEmployee(Employee employee) {
+        if (employee.getId() == null || !employeeRepository.existsById(employee.getId())) {
+            throw new IllegalArgumentException("Employee id must not be null and should exist");
+        }
         return employeeRepository.save(employee);
     }
+
 
     @Override
     public List<Employee> getEmployeeByLastNameAndLocation(String lastName, String location) {
