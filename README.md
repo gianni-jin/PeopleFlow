@@ -26,6 +26,10 @@ Upon launching the program, we can go to http://localhost:8080/swagger-ui/index.
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/d7c43fda-48ff-4fec-84e1-77a4a72c1a3c)
 
 
+## Database Schema
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/d1ef74f1-04c2-441d-9372-b347348ba0a4)
+
+
 # Code Structure
 The program follows the MVC model structure, emphasizing the separation of concerns and clear delineation of responsibilities. 
 
