@@ -111,7 +111,11 @@ public class EmployeeViewController {
     public String saveOrUpdateEmployee(@ModelAttribute Employee employee, @RequestParam("department.id") Long departmentId, RedirectAttributes redirectAttributes) {
         Department department = departmentService.getSingleDepartment(departmentId);
         employee.setDepartment(department);
-        employeeService.saveEmployee(employee);
+        if (employee.getId() == null) {
+            employeeService.saveEmployee(employee);
+        } else {
+            employeeService.updateEmployee(employee);
+        }
         redirectAttributes.addFlashAttribute("message", "Saved employee successfully!");
         return "redirect:/employees";
     }
