@@ -69,14 +69,14 @@ The reason why "CascadeType.ALL/REMOVE"  is not suitable in this case is that it
 This class is annotated with "@Entity". This way, instances of this class will be automatically mapped to records in the "tbl_departments" table in the database.
 
 
-### Methods
+#### Methods
 The "Department" class has three methods: "addEmployee(Employee employee)", "removeEmployee(Employee employee)", and "getEmployees()".
 
 The "addEmployee" and "removeEmployee" methods are used to add and remove employees from the department, respectively. When an employee is added or removed, the "department" field of the "Employee" instance is also updated. I've added these methods to ensure the consistency of the relationship between "Employee" and "Department".
 
 The "getEmployees" method is used to get the list of employees that belong to the department.
 
-### Relationship with Other Entities
+#### Relationship with Other Entities
 The "Department" class has a "@OneToMany" relationship with the "Employee" class. This means that one "Department" instance can be associated with many "Employee" instances. 
 
 The "cascade" attribute in the "@OneToMany" annotation is set to "CascadeType.ALL", which means that all operations (persist, merge, remove, refresh, detach) that happen on "Department" instances will also be cascaded to the related "Employee" instances. 
