@@ -1,4 +1,4 @@
-![image](https://github.com/gianni-jin/TalentForce/assets/129873947/5cecd24d-5892-42e4-8ffc-53b0aea98415)![image](https://github.com/gianni-jin/TalentForce/assets/129873947/2a7ce8ef-4eae-429a-a419-8caa9fcd0a44)# Project Overview
+# Project Overview
 
 ## Introduction
 TalentForce is a straightforward employee management application. The application allows users to effortlessly add new employees to the database, modify existing employee details, delete employees, and assign them to specific departments. Additionally, users can perform search operations using certain parameters to sift through the employee database.
@@ -108,6 +108,8 @@ Or by using the last name:
 We can also update the fields of an employee.
 
 Before: 
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/2a7ce8ef-4eae-429a-a419-8caa9fcd0a44)
+
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/31ad5c62-7257-41be-8c5d-35fb8c701c61)
 
 After: 
@@ -123,6 +125,8 @@ We can also delete employees from our database:
 
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/b71a2c5e-5993-4f9d-b3a6-fd4c0ae30096)
 We can also change the employee's department directly in the department management section, by clicking on the update and then removing the current employees from a certain department:
+![image](https://github.com/gianni-jin/TalentForce/assets/129873947/5cecd24d-5892-42e4-8ffc-53b0aea98415)
+
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/4c9c546d-f982-49f6-9abc-6bee8b2a322a)
 
 ![image](https://github.com/gianni-jin/TalentForce/assets/129873947/5b59071d-201e-4218-ad90-4aad95176133)
