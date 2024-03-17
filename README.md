@@ -10,7 +10,9 @@ Upon launching the application, users can navigate to "http://localhost:8080/" t
 ## Technologies Used
 The back-end is built with Spring Boot and Hibernate/JPA, while the front-end utilizes a template engine called Thymeleaf, along with HTML/CSS. The database of choice for this project is MySQL.
 
+## The Origin of the Idea
 
+After gaining a basic understanding of Spring, I wanted to apply and futher my knowledge. The thought of creating a program that would fit the needs of a common setting was appealing. As I knew I would start internships in companies, I thought it would be a good idea to create an employee management program, perhaps to also show my passion for Java/Spring.
 
 ## Future Plans
 
