@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Employees</title>
+        <link rel="stylesheet" th:href="@{/employees.css}" />
+    </head>
+    <body>
+    <div th:if="${message}" th:text="${message}"></div>
+    <div class="container">
+        <h1>Employees</h1>
+        <div class="add-employee">
+            <a class="button" href="/employees/new">Add New Employee</a>
+            <a class="button" href="/employees">Show all Employees</a>
+
+        </div>
+        <div class="search-section">
+            <h2>Search Employees</h2>
+            <form class="search-form" th:action="@{/employees/id}" method="post">
+                <input class="search-input" type="text" name="id" placeholder="Enter ID...">
+                <button class="search-button" type="submit">Search by ID</button>
+            </form>
+            <form class="search-form" th:action="@{/employees/search/name}" method="post">
+                <input class="search-input" type="text" name="firstName" placeholder="Enter First Name...">
+                <input class="search-input" type="text" name="lastName" placeholder="Enter Last Name...">
+                <button class="search-button" type="submit">Search by First Name and Last Name</button>
+            </form>
+            <form class="search-form" th:action="@{/employees/search/lastname-location}" method="post">
+                <input class="search-input" type="text" name="lastName" placeholder="Enter Last Name...">
+                <input class="search-input" type="text" name="location" placeholder="Enter Location...">
+                <button class="search-button" type="submit">Search by Last Name and Location</button>
+            </form>
+        </div>
+
+
+
+        <h2>Employee List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Location</th>
+                <th>Email</th>
+                <th>Department</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="employee : ${employees}">
+                <td th:text="${employee.id}"></td>
+                <td th:text="${employee.firstName}"></td>
+                <td th:text="${employee.lastName}"></td>
+                <td th:text="${employee.age}"></td>
+                <td th:text="${employee.gender}"></td>
+                <td th:text="${employee.location}"></td>
+                <td th:text="${employee.email}"></td>
+                <td th:text="${employee.department?.name}"></td>
+                <td>
+
+                    <a class="update-link" th:href="@{/employees/update/{id}(id=${employee.id})}">Update</a>  |
+                    <a class="update-link" th:href="@{/employees/delete/{id}(id=${employee.id})}">Delete</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+    <a class="go-back-link" href="/">Go Back</a>
+    <div th:replace="fragments/footer"></div>
+
+    </body>
+</html>

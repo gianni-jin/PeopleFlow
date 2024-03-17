@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Form</title>
+    <link rel="stylesheet" th:href="@{/employees.css}" />
+</head>
+<body>
+<h1 th:if="${isNew}" th:text="'Add Employee'">Add Employee</h1>
+<h1 th:if="${!isNew}" th:text="'Update Employee'">Update Employee</h1>
+<form class="employee-list" th:action="@{${employee != null ? '/employees/save' : '/employees/add'}}" th:object="${employee}" method="post">
+    <div class="form-search">
+        <input type="hidden" name="id" th:value="*{id}" />
+    </div>
+
+    <div class="form-search">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" th:value="*{firstName}" required class="button" />
+    </div>
+    <div class="form-search">
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" th:value="*{lastName}" required class="button" />
+    </div>
+    <div class="form-search">
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age" th:value="*{age}" min="0" class="button" />
+    </div>
+    <div class="form-search">
+        <label for="gender">Gender:</label>
+        <select id="gender" name="gender" required class="button">
+            <option value="M" th:selected="*{gender} == 'M'">Male</option>
+            <option value="F" th:selected="*{gender} == 'F'">Female</option>
+        </select>
+    </div>
+    <div class="form-search">
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" th:value="*{location}" class="button" />
+    </div>
+    <div class="form-search">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" th:value="*{email}" class="button" />
+    </div>
+    <div class="form-search">
+        <label for="department">Department:</label>
+        <select id="department" name="department.id" class="button">
+            <option th:each="department : ${departments}" th:value="${department.id}" th:text="${department.name}" th:selected="*{department != null && department.id == department.id}"></option>
+        </select>
+    </div>
+    <div class="form-search">
+        <input type="hidden" name="id" th:value="*{id}" />
+        <button type="submit" class="button">Submit</button>
+    </div>
+</form>
+<a class="go-back-link" href="/employees">Go Back</a>
+
+</body>
+</html>

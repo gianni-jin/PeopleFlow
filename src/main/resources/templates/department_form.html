@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Department Form</title>
+    <link rel="stylesheet" th:href="@{/departments.css}" />
+</head>
+<body>
+<div class="container">
+    <h1 th:if="${isNew}" th:text="'Add Department'">Add Department</h1>
+    <h1 th:if="${!isNew}" th:text="'Update Department'">Update Department</h1>
+    <form class="department-list" th:action="@{${department != null ? '/departments/save' : '/departments/add'}}" th:object="${department}" method="post">
+        <div class="form-search">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:value="*{name}" required class="button" />
+        </div>
+        <div class="form-search">
+            <h2>Available Employees</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Gender</th>
+                    <th>Location</th>
+                    <th>Email</th>
+                    <th>Department</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee : ${unassignedEmployees}">
+                    <td th:text="${employee.firstName}"></td>
+                    <td th:text="${employee.lastName}"></td>
+                    <td th:text="${employee.age}"></td>
+                    <td th:text="${employee.gender}"></td>
+                    <td th:text="${employee.location}"></td>
+                    <td th:text="${employee.email}"></td>
+                    <td th:text="${employee.department != null ? employee.department.name : 'N/A'}"></td>
+                    <td>
+                        <a th:href="@{'/departments/' + ${department.id} + '/addEmployee/' + ${employee.id}}">Add</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-search">
+            <input type="hidden" name="id" th:value="*{id}" />
+            <button type="submit" class="button">Submit</button>
+        </div>
+    </form>
+    <h2>Current Employees</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Gender</th>
+            <th>Location</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="employee : ${department.employees}">
+            <td th:text="${employee.firstName}"></td>
+            <td th:text="${employee.lastName}"></td>
+            <td th:text="${employee.age}"></td>
+            <td th:text="${employee.gender}"></td>
+            <td th:text="${employee.location}"></td>
+            <td th:text="${employee.email}"></td>
+            <td>
+                <form th:action="@{'/departments/' + ${department.id} + '/deleteEmployee/' + ${employee.id}}" th:method="post">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<a class="go-back-link" href="/departments">Go Back</a>
+<div th:replace="fragments/footer"></div>
+
+</body>
+</html>
