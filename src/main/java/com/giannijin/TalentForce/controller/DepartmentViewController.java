@@ -51,7 +51,11 @@ public class DepartmentViewController {
 
     @PostMapping("/departments/save")
     public String saveOrUpdateDepartment(@ModelAttribute Department department, RedirectAttributes redirectAttributes) {
-        departmentService.saveDepartment(department);
+        if (department.getId() == null) {
+            departmentService.saveDepartment(department);
+        } else {
+            departmentService.updateDepartment(department);
+        }
         redirectAttributes.addFlashAttribute("message", "Saved department successfully!");
         return "redirect:/departments";
     }
@@ -68,12 +72,12 @@ public class DepartmentViewController {
         Department department = departmentService.getSingleDepartment(departmentId);
         Employee employee = employeeService.getSingleEmployee(employeeId);
         if (department != null && employee != null) {
-            department.addEmployee(employee);
-            departmentService.saveDepartment(department);
+            departmentService.addEmployeeToDepartment(department, employee);
             redirectAttributes.addFlashAttribute("message", "Added employee to department successfully!");
         }
         return "redirect:/departments/update/" + departmentId;
     }
+
 
     @PostMapping("/departments/{departmentId}/deleteEmployee/{employeeId}")
     public String deleteEmployeeFromDepartment(@PathVariable("departmentId") Long departmentId, @PathVariable("employeeId") Long employeeId, RedirectAttributes redirectAttributes) {
@@ -81,11 +85,11 @@ public class DepartmentViewController {
         Employee employee = employeeService.getSingleEmployee(employeeId);
         if (department != null && employee != null) {
             department.removeEmployee(employee);
-            departmentService.saveDepartment(department);
-            employeeService.saveEmployee(employee);
+            departmentService.updateDepartment(department);
             redirectAttributes.addFlashAttribute("message", "Removed employee from department successfully!");
         }
         return "redirect:/departments/update/" + departmentId;
     }
+
 
 }
