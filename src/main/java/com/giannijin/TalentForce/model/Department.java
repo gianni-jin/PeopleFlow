@@ -30,7 +30,7 @@ public class Department {
 
 
 
-    @OneToMany(mappedBy = "department", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "department", cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REFRESH, CascadeType.DETACH}, fetch = FetchType.LAZY)
     private List<Employee> employees = new ArrayList<>();
     public void addEmployee(Employee employee) {
         this.employees.add(employee);
@@ -41,6 +41,7 @@ public class Department {
         this.employees.remove(employee);
         employee.setDepartment(null);
     }
+
 
     public List<Employee> getEmployees() {
         return employees;
