@@ -8,6 +8,7 @@ import com.giannijin.TalentForce.repository.DepartmentRepository;
 import jakarta.persistence.EntityExistsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class DepartmentServiceImp implements DepartmentService {
 
     @Autowired
     private DepartmentRepository departmentRepository;
+
+    @Autowired
+    private EmployeeService employeeService;
 
     @Override
     public List<Department> getDepartments(){
@@ -28,11 +32,20 @@ public class DepartmentServiceImp implements DepartmentService {
     }
 
 
-    @Override
-    public void deleteDepartment(Long id){
-        departmentRepository.deleteById(id);
+@Override
+@Transactional
+public void deleteDepartment(Long id){
+    Department department = getSingleDepartment(id);
+    List<Employee> employees = department.getEmployees();
+
+    for (Employee employee : employees) {
+        employeeService.deleteEmployee(employee.getId());
     }
 
+    departmentRepository.deleteById(id);
+}
+
+@Override
     public Department saveDepartment(Department department) {
         if (department.getId() != null && departmentRepository.existsById(department.getId())) {
             throw new EntityExistsException("Department with id " + department.getId() + " already exists");

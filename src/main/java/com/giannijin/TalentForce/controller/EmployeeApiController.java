@@ -96,6 +96,10 @@ public class EmployeeApiController {
 
         employee.setFirstName(employeeDetails.getFirstName());
         employee.setLastName(employeeDetails.getLastName());
+        employee.setAge(employeeDetails.getAge());
+        employee.setGender(employeeDetails.getGender());
+        employee.setLocation(employeeDetails.getLocation());
+        employee.setEmail(employeeDetails.getEmail());
         employee.setDepartment(department);
 
         Employee updatedEmployee = employeeRepository.save(employee);

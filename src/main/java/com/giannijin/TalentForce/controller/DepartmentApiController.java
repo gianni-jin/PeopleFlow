@@ -47,6 +47,13 @@ public class DepartmentApiController {
 
     @DeleteMapping("/{id}")
     public void deleteDepartment (@PathVariable Long id){
+        Department department = departmentService.getSingleDepartment(id);
+        List<Employee> employees = department.getEmployees();
+
+        for (Employee employee : employees) {
+            employeeService.deleteEmployee(employee.getId());
+        }
+
         departmentService.deleteDepartment(id);
     }
 
